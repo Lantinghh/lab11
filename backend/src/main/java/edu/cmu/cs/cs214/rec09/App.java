@@ -46,15 +46,15 @@ public class App extends NanoHTTPD {
     public Response serve(IHTTPSession session) {
         String uri = session.getUri();
         Map<String, String> params = session.getParms();
-        if (uri.equals("/plugin")) {
+        if ("/plugin".equals(uri)) {
             // e.g., /plugin?i=0
             game.startNewGame(plugins.get(Integer.parseInt(params.get("i"))));
-        } else if (uri.equals("/play")){
+        } else if ("/play".equals(uri)){
             // e.g., /play?x=1&y=1
             if (game.hasGame()) {
                 game.playMove(Integer.parseInt(params.get("x")), Integer.parseInt(params.get("y")));
             }
-        } else if (uri.equals("/start")){
+        } else if ("/start".equals(uri)){
 
         }
         // Extract the view-specific data from the game and apply it to the template.
